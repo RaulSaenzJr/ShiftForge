@@ -1,0 +1,382 @@
+.calendar-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* React Calendar Customization */
+.react-calendar {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  background: white;
+  font-family: inherit;
+  width: 100%;
+}
+
+.react-calendar__tile {
+  padding: 8px;
+  min-height: 140px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.react-calendar__tile--now {
+  background: #e3f2fd;
+}
+
+.react-calendar__tile--active {
+  background: #1e88e5;
+  color: white;
+}
+
+.react-calendar__tile:hover {
+  background: #f5f5f5;
+  border-color: #1e88e5;
+}
+
+.react-calendar__tile--active:hover {
+  background: #1e88e5;
+}
+
+/* Day number styling */
+.react-calendar__tile abbr {
+  font-weight: 600;
+  color: #212121;
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.react-calendar__tile--now abbr {
+  color: #1e88e5;
+  font-weight: 700;
+}
+
+.react-calendar__tile--active abbr {
+  color: white;
+}
+
+/* Day events area */
+.event-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  overflow: hidden;
+  font-size: 0;
+}
+
+.event-item-mini {
+  background: #1e88e5;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background 0.2s;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.event-item-mini:hover {
+  background: #1565c0;
+}
+
+.event-item-mini.wedding {
+  background: #e91e63;
+}
+
+.event-item-mini.wedding:hover {
+  background: #c2185b;
+}
+
+.event-item-mini.holiday {
+  background: #4caf50;
+}
+
+.event-item-mini.holiday:hover {
+  background: #388e3c;
+}
+
+.event-item-mini.corporate {
+  background: #2196f3;
+}
+
+.event-item-mini.corporate:hover {
+  background: #1976d2;
+}
+
+.more-events {
+  color: #666;
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding-top: 2px;
+  cursor: pointer;
+  display: block;
+  line-height: 1;
+}
+
+.more-events:hover {
+  color: #1e88e5;
+}
+
+/* Event List Section */
+.event-list-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.event-list-section h3 {
+  margin: 0 0 16px 0;
+  color: #212121;
+  font-size: 1.1rem;
+}
+
+.events-for-date {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-item {
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+}
+
+.event-item:hover {
+  border-color: #1e88e5;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+.event-item h3 {
+  margin: 0 0 8px 0;
+  color: #212121;
+  font-size: 0.95rem;
+}
+
+.event-time,
+.event-location {
+  margin: 4px 0;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.event-location {
+  margin-bottom: 8px;
+}
+
+.event-shifts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.shift-badge {
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.modal-close:hover {
+  background: #f5f5f5;
+  color: #212121;
+}
+
+.event-details {
+  padding: 24px;
+}
+
+.event-details h2 {
+  margin: 0 0 16px 0;
+  color: #212121;
+}
+
+.event-details p {
+  margin: 8px 0;
+  color: #666;
+}
+
+.event-details h3 {
+  margin: 16px 0 12px 0;
+  font-size: 1rem;
+  color: #212121;
+}
+
+.shifts-list {
+  background: #fafafa;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.shift-detail {
+  background: white;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.shift-detail:last-child {
+  margin-bottom: 0;
+}
+
+.shift-info strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #212121;
+}
+
+.shift-count {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.shift-pay {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #28a745;
+}
+
+.shift-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.pickup-btn {
+  padding: 6px 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.pickup-btn:hover:not(:disabled) {
+  background: #218838;
+}
+
+.pickup-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.filled-badge {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.success-message {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+
+.error-message {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 12px 0;
+}
+
+@media (max-width: 768px) {
+  .calendar-container {
+    grid-template-columns: 1fr;
+  }
+
+  .react-calendar__tile {
+    min-height: 100px;
+  }
+
+  .event-item-mini {
+    font-size: 0.65rem;
+    padding: 2px 3px;
+  }
+}

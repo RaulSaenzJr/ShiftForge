@@ -1,0 +1,102 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)),
+              url('https://media.istockphoto.com/id/483561017/photo/catering-service-at-company-event-offer-food.jpg?s=612x612&w=0&k=20&c=QXIpVDWN6FZ-8yCkSCsN2NaUNLyYAdSeqs5XtK_FCyk=');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 20px;
+}
+
+.auth-box {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.auth-box h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: var(--gray-900);
+}
+
+.auth-subtitle {
+  color: var(--gray-600);
+  margin-bottom: 24px;
+}
+
+.role-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+  font-size: 0.95rem;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+  color: #764ba2;
+}
+
+.admin-code-field {
+  background: #f3f4f6;
+  border-left: 4px solid #667eea;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.admin-code-field small {
+  display: block;
+  color: #666;
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--gray-600);
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
