@@ -4,7 +4,7 @@
 
 ### Default Admin Code
 
-The default admin code is: **STAFFING2025**
+The admin code is set via the `ADMIN_CODE` environment variable in your backend `.env` file (local) or Railway Variables (production). Do not share or commit this value.
 
 You can change this in the backend `.env` file:
 

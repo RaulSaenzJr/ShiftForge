@@ -8,10 +8,17 @@
     "build": "cd frontend && npm run build",
     "start": "cd backend && npm start"
   },
-  "keywords": ["staffing", "events", "calendar"],
+  "keywords": [
+    "staffing",
+    "events",
+    "calendar"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "mongodb": "^7.2.0"
   }
 }
