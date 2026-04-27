@@ -202,7 +202,7 @@ export const Login: FC = () => {
 
         <div className="auth-switch">
           {isRegister ? 'Already have an account?' : "Don't have an account?"}{' '}
-          <button onClick={() => setIsRegister(!isRegister)} className="link-button">
+          <button type="button" onClick={() => setIsRegister(!isRegister)} className="link-button">
             {isRegister ? 'Sign In' : 'Sign Up'}
           </button>
         </div>
