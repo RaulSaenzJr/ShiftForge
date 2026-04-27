@@ -81,6 +81,16 @@
   font-size: 0.8rem;
 }
 
+.success-message {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
 .auth-switch {
   text-align: center;
   margin-top: 24px;

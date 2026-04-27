@@ -1,7 +1,6 @@
-import { useState, FC, useEffect } from 'react';
+import { useState, FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { loadStaffRoles, getDefaultStaffRoles } from '../utils/staffRoles';
 import '../styles/Auth.css';
 
 interface LoginFormData {
@@ -10,7 +9,6 @@ interface LoginFormData {
   firstName: string;
   lastName: string;
   phone: string;
-  availableRoles: string[];
   adminCode?: string;
 }
 
@@ -20,20 +18,14 @@ export const Login: FC = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState('');
   const [showAdminCode, setShowAdminCode] = useState(false);
-  const [staffRoles, setStaffRoles] = useState<string[]>(getDefaultStaffRoles());
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
     password: '',
     firstName: '',
     lastName: '',
     phone: '',
-    availableRoles: [],
     adminCode: ''
   });
-
-  useEffect(() => {
-    setStaffRoles(loadStaffRoles());
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -62,15 +54,6 @@ export const Login: FC = () => {
     setFormData((prev: LoginFormData) => ({
       ...prev,
       [name]: value
-    }));
-  };
-
-  const handleRoleToggle = (role: string): void => {
-    setFormData((prev: LoginFormData) => ({
-      ...prev,
-      availableRoles: prev.availableRoles.includes(role)
-        ? prev.availableRoles.filter((r: string) => r !== role)
-        : [...prev.availableRoles, role]
     }));
   };
 
@@ -122,26 +105,6 @@ export const Login: FC = () => {
                   onChange={handleChange}
                 />
               </div>
-
-              <div className="form-group">
-                <label>Available Roles (select all that apply)</label>
-                <div className="role-checkboxes">
-                  {staffRoles.map((role: string) => {
-                    const roleId = `role-${role.replace(/\s+/g, '-').toLowerCase()}`;
-                    return (
-                      <label key={role} className="checkbox-label" htmlFor={roleId}>
-                        <input
-                          type="checkbox"
-                          id={roleId}
-                          checked={formData.availableRoles.includes(role)}
-                          onChange={() => handleRoleToggle(role)}
-                        />
-                        {role}
-                      </label>
-                    );
-                  })}
-                  </div>
-                </div>
 
               <div className="form-group">
                 <button

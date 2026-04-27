@@ -63,6 +63,16 @@ export const authService = {
     return response.data;
   },
 
+  async updateProfile(data: {
+    firstName?: string;
+    lastName?: string;
+    phone?: string;
+    availableRoles?: string[];
+  }) {
+    const response = await api.put('/auth/profile', data);
+    return response.data;
+  },
+
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');

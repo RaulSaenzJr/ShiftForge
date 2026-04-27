@@ -146,6 +146,35 @@ router.get('/me', auth, async (req, res) => {
   }
 });
 
+// Update profile
+router.put('/profile', auth, async (req, res) => {
+  try {
+    const { firstName, lastName, phone, availableRoles } = req.body;
+    const user = await User.findById(req.userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    if (firstName) user.firstName = firstName;
+    if (lastName) user.lastName = lastName;
+    if (phone !== undefined) user.phone = phone || undefined;
+    if (availableRoles && user.role === 'contractor') user.availableRoles = availableRoles;
+
+    await user.save();
+
+    res.json({
+      id: user._id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      phone: user.phone,
+      availableRoles: user.availableRoles
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // Get all contractors (Admin only) - for staff roster
 router.get('/contractors', [auth, requireAdmin], async (req, res) => {
   try {

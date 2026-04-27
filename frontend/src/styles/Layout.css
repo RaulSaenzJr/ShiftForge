@@ -38,6 +38,21 @@
   font-weight: 500;
 }
 
+.btn-profile {
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  color: var(--gray-700);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-profile:hover {
+  background-color: var(--gray-100);
+}
+
 .btn-logout {
   padding: 8px 16px;
   background-color: var(--gray-200);

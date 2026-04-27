@@ -6,6 +6,7 @@ import { Login } from './pages/Login';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { ContractorDashboard } from './pages/ContractorDashboard';
 import { ClientDashboard } from './pages/ClientDashboard';
+import { Profile } from './pages/Profile';
 import { Layout } from './components/Layout';
 
 const AppRoutes: FC = () => {
@@ -26,6 +27,16 @@ const AppRoutes: FC = () => {
               {user?.role === 'admin' && <AdminDashboard />}
               {user?.role === 'contractor' && <ContractorDashboard />}
               {user?.role === 'client' && <ClientDashboard />}
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Profile />
             </Layout>
           </ProtectedRoute>
         }
