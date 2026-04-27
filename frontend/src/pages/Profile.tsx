@@ -1,4 +1,5 @@
 import { useState, useEffect, FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { authService } from '../services/auth.service';
 import { loadStaffRoles } from '../utils/staffRoles';
@@ -6,6 +7,7 @@ import '../styles/Auth.css';
 
 export const Profile: FC = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [staffRoles, setStaffRoles] = useState<string[]>([]);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState('');
@@ -41,7 +43,7 @@ export const Profile: FC = () => {
     try {
       await authService.updateProfile(formData);
       setSaved(true);
-      setTimeout(() => setSaved(false), 3000);
+      setTimeout(() => navigate('/'), 1500);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to save profile');
     }
