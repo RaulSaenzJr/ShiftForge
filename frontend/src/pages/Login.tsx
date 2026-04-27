@@ -47,7 +47,13 @@ export const Login: FC = () => {
       }
       navigate('/');
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Authentication failed');
+      if (err.response) {
+        setError(err.response.data?.message || `Server error (${err.response.status})`);
+      } else if (err.request) {
+        setError('Cannot reach server — check your connection or try again later');
+      } else {
+        setError(err.message || 'Authentication failed');
+      }
     }
   };
 
